@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="optionsTitle">Browsing Breaks 設定</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div>
+        <p class="eyebrow" data-i18n="eyebrow">CHROME EXTENSION</p>
+        <h1>Browsing Breaks</h1>
+        <p data-i18n="tagline">Take breaks while browsing.</p>
+      </div>
+      <button id="add-rule" class="primary" type="button" data-i18n="addRule">新規追加</button>
+    </header>
+
+    <main>
+      <section class="panel" aria-labelledby="rules-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="rules-title" data-i18n="siteRulesTitle">サイト設定</h2>
+            <p data-i18n="siteRulesDescription">一覧の上にある設定ほど、複数一致時に優先されます。</p>
+          </div>
+        </div>
+        <div id="rule-list" class="rule-list"></div>
+        <p id="empty-rules" class="empty" data-i18n="emptyRules">サイト設定はまだありません。</p>
+      </section>
+
+      <section class="panel" aria-labelledby="appearance-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="appearance-title" data-i18n="appearanceTitle">ロック画面の配色</h2>
+            <p data-i18n="appearanceDescription">すべてのサイトに共通で適用されます。</p>
+          </div>
+        </div>
+        <form id="appearance-form" class="appearance-grid" novalidate>
+          <div class="color-field">
+            <label for="text-color-text" data-i18n="textColor">文字色</label>
+            <div class="color-controls">
+              <input id="text-color-picker" type="color" aria-label="文字色カラーピッカー" data-i18n-aria-label="textColorPicker" />
+              <input id="text-color-text" type="text" maxlength="7" spellcheck="false" />
+            </div>
+            <p id="text-color-error" class="field-error"></p>
+          </div>
+          <div class="color-field">
+            <label for="background-color-text" data-i18n="backgroundColor">背景色</label>
+            <div class="color-controls">
+              <input id="background-color-picker" type="color" aria-label="背景色カラーピッカー" data-i18n-aria-label="backgroundColorPicker" />
+              <input id="background-color-text" type="text" maxlength="7" spellcheck="false" />
+            </div>
+            <p id="background-color-error" class="field-error"></p>
+          </div>
+          <div id="appearance-preview" class="preview" aria-label="配色プレビュー" data-i18n-aria-label="appearancePreview">
+            <strong>7 + 5 = ?</strong>
+            <span data-i18n="breakTime">休憩タイム</span>
+          </div>
+          <div class="form-actions full-width">
+            <button class="primary" type="submit" data-i18n="saveAppearance">配色を保存</button>
+            <button id="reset-appearance" class="secondary" type="button" data-i18n="resetAppearance">初期値に戻す</button>
+            <span id="appearance-status" class="save-status" role="status"></span>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <dialog id="rule-dialog">
+      <form id="rule-form" method="dialog" novalidate>
+        <div class="dialog-heading">
+          <h2 id="dialog-title" data-i18n="addRuleDialogTitle">サイト設定を追加</h2>
+          <p data-i18n="ruleDialogDescription">URL全体に対して正規表現を評価します。</p>
+        </div>
+        <input id="rule-id" type="hidden" />
+        <div class="field">
+          <label for="rule-name"><span data-i18n="siteName">サイト名</span> <span data-i18n="optional">任意</span></label>
+          <input id="rule-name" type="text" maxlength="100" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="url-pattern" data-i18n="urlPattern">URL正規表現</label>
+          <input id="url-pattern" type="text" maxlength="500" spellcheck="false" required />
+          <p id="url-example" class="help" data-i18n="urlExample">例: ^https://(www\.)?example\.com/</p>
+          <p id="url-pattern-error" class="field-error"></p>
+          <p id="duplicate-warning" class="warning"></p>
+        </div>
+        <div class="field">
+          <label for="interval-type" data-i18n="intervalType">間隔方式</label>
+          <select id="interval-type">
+            <option value="minutes" data-i18n="intervalMinutes">時間（分）</option>
+            <option value="navigations" data-i18n="intervalNavigations">移動回数</option>
+          </select>
+          <p id="interval-type-error" class="field-error"></p>
+        </div>
+        <div class="field">
+          <label for="interval-value" data-i18n="intervalValue">間隔値</label>
+          <input id="interval-value" type="number" min="1" step="1" required />
+          <p id="interval-value-error" class="field-error"></p>
+        </div>
+        <div class="dialog-actions">
+          <button id="cancel-rule" class="secondary" type="button" data-i18n="cancel">キャンセル</button>
+          <button id="save-rule" class="primary" type="submit" data-i18n="save">保存</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

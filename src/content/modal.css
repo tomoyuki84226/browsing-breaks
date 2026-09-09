@@ -1,0 +1,111 @@
+:host {
+  --bb-text: #c9d1d9;
+  --bb-background: #000000;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 24px;
+  overflow: auto;
+  color: var(--bb-text);
+  background: var(--bb-background);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+.card {
+  width: min(100%, 460px);
+  padding: clamp(28px, 7vw, 54px);
+  text-align: center;
+  border: 1px solid color-mix(in srgb, var(--bb-text) 35%, transparent);
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--bb-background) 92%, var(--bb-text));
+  box-shadow: 0 24px 80px color-mix(in srgb, var(--bb-background) 65%, transparent);
+}
+
+h1 {
+  margin: 0;
+  color: var(--bb-text);
+  font-size: clamp(24px, 6vw, 36px);
+  font-weight: 700;
+}
+
+.problem {
+  margin: 30px 0 24px;
+  color: var(--bb-text);
+  font-size: clamp(36px, 10vw, 58px);
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+
+form {
+  display: grid;
+  gap: 12px;
+}
+
+label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+input,
+button {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 10px;
+  font: inherit;
+}
+
+input {
+  border: 2px solid color-mix(in srgb, var(--bb-text) 55%, var(--bb-background));
+  outline: none;
+  color: var(--bb-text);
+  background: color-mix(in srgb, var(--bb-background) 88%, var(--bb-text));
+  padding: 10px 14px;
+  text-align: center;
+  font-size: 20px;
+}
+
+input:focus {
+  border-color: var(--bb-text);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--bb-text) 25%, transparent);
+}
+
+button {
+  border: 2px solid var(--bb-text);
+  color: var(--bb-background);
+  background: var(--bb-text);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover,
+button:focus-visible {
+  filter: brightness(1.12);
+}
+
+.error {
+  min-height: 24px;
+  margin: 0;
+  color: color-mix(in srgb, #ff5f67 72%, var(--bb-text));
+  font-weight: 650;
+}
+
+.hint {
+  margin: 18px 0 0;
+  color: color-mix(in srgb, var(--bb-text) 72%, var(--bb-background));
+  font-size: 14px;
+}

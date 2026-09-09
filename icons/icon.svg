@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Browsing Breaks icon</title>
+  <desc id="desc">A white browser window and pause symbol on a teal rounded-square background.</desc>
+
+  <rect width="128" height="128" rx="26" fill="#2A9D8F"/>
+
+  <rect x="20" y="24" width="88" height="80" rx="11" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+  <path d="M24 45H104" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+  <circle cx="34" cy="35" r="4" fill="#FFFFFF"/>
+
+  <rect x="45" y="59" width="12" height="31" rx="3" fill="#FFFFFF"/>
+  <rect x="71" y="59" width="12" height="31" rx="3" fill="#FFFFFF"/>
+</svg>

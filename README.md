@@ -1,12 +1,14 @@
 # Browsing Breaks
 
-<img src="icons/icon.svg" alt="Browsing Breaks icon" width="128" height="128">
-
 > Take breaks while browsing.
 
-日本語と英語に対応しています。Chromeの表示言語に合わせて、設定画面、ロック画面、拡張機能名と説明の表示言語が自動的に切り替わります。
+![Display image](display.png)
 
 Available in Japanese and English. The settings page, lock screen, extension name, and description automatically follow Chrome's display language.
+
+This is a Chrome extension that interrupts navigation to a specified URL at set intervals or after a certain number of visits, locking the page until you correctly solve an addition problem.
+
+日本語と英語に対応しています。Chromeの表示言語に合わせて、設定画面、ロック画面、拡張機能名と説明の表示言語が自動的に切り替わります。
 
 指定したURLへの移動を一定時間または一定回数ごとに中断し、足し算に正解するまでページをロックするChrome拡張機能です。
 

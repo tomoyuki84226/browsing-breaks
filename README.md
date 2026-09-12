@@ -1,4 +1,4 @@
-# Browsing Breaks
+# [Browsing Breaks](https://chromewebstore.google.com/detail/browsing-breaks/lmjlbjgpmfghgfdcppeabogakagloljn)
 
 > Take breaks while browsing.
 

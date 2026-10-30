@@ -238,9 +238,19 @@ test("同一URLのリロードは加算し、document通知自身の短時間重
   assert.equal(isDuplicateNavigation(reload, { ...reload, at: 1_850 }, 750), false);
 });
 
-test("問題は1～9で生成し、整数の正解だけを受け付ける", () => {
-  assert.deepEqual(generateProblem(() => 0), { left: 1, right: 1 });
-  assert.deepEqual(generateProblem(() => 0.999999), { left: 9, right: 9 });
+test("問題は2桁同士で答えが30～70になり、整数の正解だけを受け付ける", () => {
+  assert.deepEqual(generateProblem(() => 0), { left: 11, right: 19 });
+  assert.deepEqual(generateProblem(() => 0.999999), { left: 59, right: 11 });
+  for (let total = 30; total <= 70; total += 1) {
+    for (const split of Array.from({ length: 100 }, (_, index) => index / 100)) {
+      let call = 0;
+      const problem = generateProblem(() => call++ === 0 ? (total - 30) / 41 : split);
+      assert.equal(problem.left + problem.right, total);
+      assert.ok(problem.left >= 10 && problem.right >= 10);
+      assert.notEqual(problem.left % 10, 0);
+      assert.notEqual(problem.right % 10, 0);
+    }
+  }
   assert.equal(isCorrectAnswer({ left: 7, right: 5 }, 12), true);
   assert.equal(isCorrectAnswer({ left: 7, right: 5 }, 12.0), true);
   assert.equal(isCorrectAnswer({ left: 7, right: 5 }, 11), false);

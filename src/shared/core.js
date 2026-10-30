@@ -123,9 +123,17 @@ export function isDuplicateNavigation(previous, next, windowMs) {
 }
 
 export function generateProblem(random = Math.random) {
+  const total = Math.floor(random() * 41) + 30;
+  const candidates = [];
+  for (let value = 11; value <= total - 11; value += 1) {
+    if (value % 10 !== 0 && (total - value) % 10 !== 0) {
+      candidates.push(value);
+    }
+  }
+  const left = candidates[Math.floor(random() * candidates.length)];
   return {
-    left: Math.floor(random() * 9) + 1,
-    right: Math.floor(random() * 9) + 1,
+    left,
+    right: total - left,
   };
 }
 
